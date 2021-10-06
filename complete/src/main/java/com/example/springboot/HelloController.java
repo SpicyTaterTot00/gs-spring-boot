@@ -19,4 +19,9 @@ public class HelloController {
 		return "greeting";
 	}
 
+	@GetMapping("/xkcd")
+	public String xkcd() {
+		return "xkcd";	
+	}
+
 }
