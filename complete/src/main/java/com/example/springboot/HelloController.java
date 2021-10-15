@@ -28,8 +28,8 @@ public class HelloController {
 	//Request Parameter Method
 	@GetMapping("/xkcdSpec")
 	public String xkcdSpecific (@RequestParam(name="id", required=false) String id, Model model) {
-		if(!id){
-			id= "200"
+		if(id== null){
+			id= "200";
 		}
 		model.addAttribute("id", id);
 		return "xkcdSpecific";
