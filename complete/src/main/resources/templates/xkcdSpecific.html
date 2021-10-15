@@ -54,9 +54,9 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
+        <script th:inline='javascript'>
             $.ajax({
-                url: 'https://xkcd.com/614/info.0.json',
+                url: 'https://xkcd.com/'+[[${id}]] +'/info.0.json',
                 type:'GET',
                 dataType:"json",
                 success:function(data){

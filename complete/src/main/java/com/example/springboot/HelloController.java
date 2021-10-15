@@ -3,6 +3,7 @@ package com.example.springboot;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 
 @Controller
@@ -23,10 +24,22 @@ public class HelloController {
 	public String xkcd() {
 		return "xkcd";	
 	}
+
+	//Request Parameter Method
 	@GetMapping("/xkcdSpec")
-	public String xkcdSpecific (@RequestParam(name="id", required=true) String id, Model model) {
+	public String xkcdSpecific (@RequestParam(name="id", required=false) String id, Model model) {
+		if(!id){
+			id= "200"
+		}
 		model.addAttribute("id", id);
 		return "xkcdSpecific";
 	}
+
+	//Path variable method
+	//@GetMapping("/xkcdSpec/{id}")
+	//public String xkcdSpecific (@PathVariable String id, Model model) {
+	//	model.addAttribute("id", id);
+	//	return "xkcdSpecific";
+	//}
 
 }
