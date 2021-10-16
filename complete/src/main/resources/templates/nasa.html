@@ -23,7 +23,7 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Greeting</a></li>
                         <li class="nav-item"><a class="nav-link" href="/xkcd">XKCD</a></li>
                         <li class="nav-item"><a class="nav-link" href="/xkcdSpec">XKCD Specific</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">NASA POD</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/nasa">NASA POD</a></li>
                     </ul>
                 </div>
             </div>
@@ -31,9 +31,9 @@
         <!-- Page content-->
         <div class="container">
             <div class="text-center mt-5">
-                <h1>XKCD Current Comic</h1>
+                <h1>Nasa Picture of the Day</h1>
                 <!-- <p th:text="'Hello, ' + ${name} + '!'" /> -->
-                <p class="lead">Most Recent XKCD Comic</p>
+                <p class="lead">Most Recent Image</p>
                 <!-- <p>Bootstrap v5.1.1</p> -->
                 <div class="comic">
                     <div class="spinner-grow" role="status">
@@ -49,11 +49,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script th:inline='javascript'>
             $.ajax({
-                url: 'https://xkcd.com/'+[[${id}]] +'/info.0.json',
+                url: 'https://api.nasa.gov/planetary/apod?api_key=7g4I21BxVVHnTCmmFiv72PKXjw0hSh7ZbazVM7Zs'+[[${date}]] +'/info.0.json',
                 type:'GET',
                 dataType:"json",
                 success:function(data){
-                    $('.comic').html(
+                    $('.nasa').html(
                         '<p class "lead">' + data.safe_title + '</p> <img src="' + data.img +'" alt="' + data.alt +'" height="600">'
                     )
                 },

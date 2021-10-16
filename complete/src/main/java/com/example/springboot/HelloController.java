@@ -42,4 +42,12 @@ public class HelloController {
 	//	return "xkcdSpecific";
 	//}
 
+	@GetMapping("/nasa")
+	public String nasaPOD (@RequestParam(name="date", required=false) String date, Model model) {
+		if(date== null){
+			date= "2021-10-16";
+		}
+		model.addAttribute("id", id);
+		return "nasaPod";
+	}
 }
