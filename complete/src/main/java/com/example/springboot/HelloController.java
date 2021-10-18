@@ -1,5 +1,7 @@
 package com.example.springboot;
 
+import java.time.LocalDate;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,12 +44,19 @@ public class HelloController {
 	//	return "xkcdSpecific";
 	//}
 
+	
+
 	@GetMapping("/nasa")
-	public String nasa (@RequestParam(name="date", required=false) String date, Model model) {
-		//if(date == null){
-		//	date = "2021-10-16";
-		//}
+	public String nasa (@RequestParam(name="date", required=false) LocalDate date, Model model) {
+		
+		LocalDate todayDate = LocalDate.now();
+		if(date == null){
+			date = todayDate;
+		
 		model.addAttribute("date", date);
 		return "nasa";
 	}
+		return null;
+	
+}
 }
