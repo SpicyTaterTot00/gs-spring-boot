@@ -1,7 +1,7 @@
 package com.example.springboot;
-
 import java.time.LocalDate;
-
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,16 +47,15 @@ public class HelloController {
 	
 
 	@GetMapping("/nasa")
-	public String nasa (@RequestParam(name="date", required=false) LocalDate date, Model model) {
+	public String nasa (@RequestParam(name="date", required=false)  LocalDate date, Model model) {
 		
-		LocalDate todayDate = LocalDate.now();
 		if(date == null){
-			date = todayDate;
+			LocalDate todayDate = LocalDate.now();
+			date = todayDate;}
 		
 		model.addAttribute("date", date);
 		return "nasa";
 	}
-		return null;
 	
 }
-}
+
