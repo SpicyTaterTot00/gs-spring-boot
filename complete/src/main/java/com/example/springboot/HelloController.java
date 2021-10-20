@@ -1,17 +1,11 @@
 package com.example.springboot;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 
 @Controller
@@ -58,7 +52,7 @@ public class HelloController {
 
 		   		String dayAsString = sdf.format(date); // formats date received to string in desired format using sdf 
 				Date dateIn = sdf.parse(dayAsString);        //parses string after format/ assigns to dateIn
-				date=dateIn;  //returns date with desired format
+				date = dateIn;  //returns date with desired format
 	 	}
 		 
 	 	model.addAttribute("date",  date);
