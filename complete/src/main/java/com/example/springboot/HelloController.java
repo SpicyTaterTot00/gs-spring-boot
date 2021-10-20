@@ -1,8 +1,6 @@
 package com.example.springboot;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,32 +30,29 @@ public class HelloController {
 		return "xkcdSpecific";
 	}
 
-	// @GetMapping("/nasa").     //testing default set to current date
+	// @GetMapping("/nasa")     //testing default set to current date
 	// public String nasa() {
 	// 	return "nasa";	
 	// }
 
 	
-	
 	 @GetMapping("/nasa")
 
-	 public String nasa (@RequestParam (name= "date", required=false) Date date, Model model) throws ParseException  {
+	public String nasa (@RequestParam (name= "date", required=false) String date, Model model) {
 
-	 	if(date == null){ //sets default to (Current) today's date
-			 Date todayDate= new Date();
-			 date= todayDate;
+	 if(date == null){ //sets default to (Current) today's date
+		 LocalDate today = LocalDate.now();
+		 date=(today.toString());
+	    }
+		 else{
+		 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		  LocalDate inputDay = LocalDate.parse(date,formatter);
+		  date=(inputDay.toString());
 		 }
-			 else{
- 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-
-		   		String dayAsString = sdf.format(date); // formats date received to string in desired format using sdf 
-				Date dateIn = sdf.parse(dayAsString);        //parses string after format/ assigns to dateIn
-				date = dateIn;  //returns date with desired format
-	 	}
-		 
-	 	model.addAttribute("date",  date);
-	 	return "nasa";
-	 }
+			 
+	     model.addAttribute("date",  date);
+	  	return "nasa";
+	  }
 } 
 
 
