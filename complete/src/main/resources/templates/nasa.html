@@ -56,7 +56,7 @@
                 dataType:"json",
                 success:function(data){
                     $('.nasa').html(
-                        '<p class "lead">' + data.title + '</p> <img src="' + data.url +'" width="50%">' +  '<p>' + '  ' + '</p>' + '<p>' + data.explanation + '</p>')},
+                        '<p class "lead">' + data.title + '</p> <img src="' + data.url + '" alt="' + data.alt +'" width="50%">' +  '<p>' + '  ' + '</p>' + '<p>' + data.explanation + '</p>')},
                 error:function(data){
                     console.log(error)
                     console.log(data);
