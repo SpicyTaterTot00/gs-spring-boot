@@ -51,7 +51,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script th:inline='javascript'>
             $.ajax({
-                url: 'https://api.nasa.gov/planetary/apod?api_key=7g4I21BxVVHnTCmmFiv72PKXjw0hSh7ZbazVM7Zs',//+[[${date}]] +'/info.0.json'
+                url: 'https://api.nasa.gov/planetary/apod?api_key=7g4I21BxVVHnTCmmFiv72PKXjw0hSh7ZbazVM7Zs', //+[[${date}]]
                 type:'GET',
                 dataType:"json",
                 success:function(data){
